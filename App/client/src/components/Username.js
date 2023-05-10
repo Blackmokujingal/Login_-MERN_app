@@ -11,7 +11,7 @@ const Username = () => {
       <div className="flex justify-center items-center h-screen">
         <div className={styles.glass}>
           <div className="title flex flex-col items-center">
-            <h4 className="text-5xl font-bold">Hello Again !</h4>
+            <h4 className="text-5xl font-bold text-indigo-500">Hello Again !</h4>
             <span className="py-4 text-xl w-2/3 text-center text-gray-500">
               Explore More by connecting with us{" "}
             </span>
