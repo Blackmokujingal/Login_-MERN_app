@@ -12,7 +12,7 @@ export async function usernameValidate(values){
 // validate username 
 function usernameVerify(error = {}, values){
     if(!values.username){
-        error.username = toast.error('Username Required !');
+        error.username = toast.error('A Username is Required !');
     }else if(values.username.includes(" ")){
         error.username = toast.error('Invalid Username !')
     }
