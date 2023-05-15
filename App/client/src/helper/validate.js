@@ -21,7 +21,10 @@ function passwordVerify(errors = {}, values) {
   return errors;
 }
 
+
+
 // validate username
+
 function usernameVerify(error = {}, values) {
   if (!values.username) {
     error.username = toast.error("A Username is Required !");
@@ -32,10 +35,23 @@ function usernameVerify(error = {}, values) {
   return error;
 }
 
+
+
 // validate login page username
 export async function usernameValidate(values) {
   const errors = usernameVerify({}, values);
   return errors;
+}
+
+//validate reset password
+export async function resetPasswordValidation(values){
+    const errors = passwordVerify({}, values);
+
+    if(values.password !== values.confirm_pwd){
+        errors.exist = toast.error("The password don't match !");
+    }
+
+    return errors;
 }
 
 // validate password
