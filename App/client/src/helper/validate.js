@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import toast from "react-hot-toast";
 
 // validate password
@@ -23,19 +24,14 @@ function passwordVerify(errors = {}, values) {
 
 
 
-// validate username
+/** validate register form */
+export async function registerValidation(values){
+    const errors = usernameVerify({}, values);
+    passwordVerify(errors, values);
+    emailVerify(errors, values);
 
-function usernameVerify(error = {}, values) {
-  if (!values.username) {
-    error.username = toast.error("A Username is Required !");
-  } else if (values.username.includes(" ")) {
-    error.username = toast.error("Invalid Username !");
-  }
-
-  return error;
+    return errors;
 }
-
-
 
 // validate login page username
 export async function usernameValidate(values) {
@@ -54,10 +50,37 @@ export async function resetPasswordValidation(values){
     return errors;
 }
 
-// validate password
+/************************************************* */
 
+
+// validate password
 export async function passwordValidate(values) {
   const errors = passwordVerify({}, values);
 
   return errors;
 }
+
+
+/** validate email */
+function emailVerify(error ={}, values){
+    if(!values.email){
+        error.email = toast.error("An email is required !");
+    }else if(values.email.includes(" ")){
+        error.email = toast.error("Wrong Email !")
+    }else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)){
+        error.email = toast.error("Invalid email address !")
+    }
+
+    return error;
+}
+
+// validate username
+function usernameVerify(error = {}, values) {
+    if (!values.username) {
+      error.username = toast.error("A Username is Required !");
+    } else if (values.username.includes(" ")) {
+      error.username = toast.error("Invalid Username !");
+    }
+  
+    return error;
+  }
