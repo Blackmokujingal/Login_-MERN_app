@@ -112,8 +112,8 @@ const Register = () => {
             </div>
             <div className="text-center py-2">
               <span className="text-gray-500">
-                Come back later ? 
-                <Link className="text-red-500 pl-2" to="/">
+                Come back later ?{" "}
+                <Link className="text-red-500 p-l 2" to="/">
                   Logout
                 </Link>
               </span>
