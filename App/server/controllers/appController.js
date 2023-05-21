@@ -196,9 +196,13 @@ export async function verifyOTP(req,res){
 }
 
 /** GET: http://localhost:8000/api/createResetSession */
-export async function createResetSession(req, res) {
-  res.json("createResetSession route");
+export async function createResetSession(req,res){
+  if(req.app.locals.resetSession){
+       return res.status(201).send({ flag : req.app.locals.resetSession})
+  }
+  return res.status(440).send({error : "Session expired !"})
 }
+
 
 /** PUT: http://localhost:8000/api/resetPassword */
 export async function resetPassword(req, res) {
